@@ -1,2 +1,26 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<h1><%= @restaurant.name %></h1>
+<div>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.category %></p>
+  <p><%= @restaurant.phone_number %></p>
+</div>
+<div>
+  <h5 class="text-center">Write a review</h5>
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :rating, collection: (0..5) %>
+    <%= f.input :content %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>
+<div class="cards-container row my-3">
+  <% @restaurant.reviews.each do |review| %>
+    <div class="card col-3 m-2">
+      <h4>
+        <% review.rating.times do %>
+          ⭐️
+        <% end %>
+      </h4>
+      <p><%= review.content %></p>
+    </div>
+  <% end %>
+</div>

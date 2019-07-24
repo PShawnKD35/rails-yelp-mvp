@@ -1,13 +1,12 @@
-<div class="container">
-  <h1>Restaurants</h1>
-  <div class="row">
-    <% @restaurants.each do |restaurant| %>
-      <div class="card p-3 m-3 col-3">
-        <p><%= link_to restaurant.name, restaurant %></p>
-        <p><%= restaurant.address %></p>
-        <p><%= restaurant.category %></p>
-        <p><%= restaurant.phone_number %></p>
-      </div>
-    <% end %>
-  </div>
+<h1>Restaurants</h1>
+<%= link_to "Submit a new restaurant", new_restaurant_path %>
+<div class="row">
+  <% @restaurants.each do |restaurant| %>
+    <div class="card p-3 m-3 col-sm-12 col-md-6 col-lg-3">
+      <p><%= link_to restaurant.name, restaurant %></p>
+      <p><%= restaurant.address %></p>
+      <p><%= restaurant.category %></p>
+      <p><%= restaurant.phone_number %></p>
+    </div>
+  <% end %>
 </div>
