@@ -16,3 +16,9 @@ Restaurant.destroy_all if Rails.env.development?
                      category: %w[chinese italian japanese french belgian].sample,
                      phone_number: Faker::PhoneNumber.phone_number)
 end
+
+(Restaurant.count * 8).times do
+  Review.create!(rating: (0..5).to_a.sample,
+                 content: Faker::Movie.quote,
+                 restaurant: Restaurant.all.sample)
+end
